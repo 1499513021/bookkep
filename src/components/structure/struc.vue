@@ -1,0 +1,39 @@
+<template>
+    <div>
+        <div class="footer">
+            <router-link to="/Turnover"><img src="@/assets/img/list.png" alt="" srcset="">账单</router-link>
+            <router-link to="/Bill"><img src="@/assets/img/edit.png" alt="" srcset="">记账</router-link>
+             <router-link to="/Bill"><img src="@/assets/img/library.png" alt="" srcset="">库存</router-link>
+            <router-link to="/Turnover"><img src="@/assets/img/user.png" alt="" srcset="">我的</router-link>
+        </div>
+    </div>
+</template>
+<script>
+export default {
+  name: 'Struc'
+}
+</script>
+<style scoped>
+    .footer{
+        /* height: 5rem; */
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 9999999;
+        background: #fff;
+    }
+    .footer a{
+        flex: 1;
+        height: 100%;
+        /* line-height: 5rem; */
+    }
+    img{
+        width: 30px;
+        display: block;
+        margin: auto;
+    }
+</style>

@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a, a:hover, a:visited, a:link, a:active {
+    color:#000;
+    text-decoration:none;
+    outline: none;
+    /*  a标签的四种状态都和本身颜色保持一致 */
+}
+button{
+    border:0;
+    background-color:none;
+    outline:none;
+    /* //用于IOS下移除原生样式 */
+    -webkit-appearance: none;
+}
+select {
+    border: none;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    /*在选择框的最右侧中间显示小箭头图片*/
+    background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+    padding-right: 14px;
+}
+input{
+    border: none;
+    appearance:none;
+    -moz-appearance:none;
+    /* //input标签聚焦不出现默认边框: */
+    outline:none;
+    /* //用于IOS下移除原生样式 */
+    -webkit-appearance: none;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */  color:#3c8bee ;; opacity:1;  font-size: 0.25rem;text-align: center;  }
+::-moz-placeholder { /* Mozilla Firefox 19+ */  color:#3c8bee ;; opacity:1;  font-size: 0.25rem;text-align: center;  }
+input:-ms-input-placeholder{  color:#3c8bee ;; opacity:1;  font-size: 0.25rem;text-align: center;  }
+input::-webkit-input-placeholder{  color:#3c8bee ;; opacity:1;  font-size: 0.25rem;text-align: center;  }
+input:focus{ 
+    /* //input标签聚焦不出现默认边框: */
+    outline:none; 
+}
