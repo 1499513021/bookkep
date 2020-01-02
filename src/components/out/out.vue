@@ -1,9 +1,6 @@
 <template>
   <div>
     <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="活动名称">
-        <el-input v-model="form.name"></el-input>
-      </el-form-item>
       <el-form-item label="支付方式">
         <el-select v-model="form.region" placeholder="请选择支付方式">
           <el-option label="微信" value="shanghai"></el-option>
@@ -13,14 +10,20 @@
           <el-option label="欠账" value="beijing"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="活动性质">
-        <el-checkbox-group v-model="form.type">
-          <el-checkbox label="房租+生活" name="type"></el-checkbox>
-          <el-checkbox label="人工费" name="type"></el-checkbox>
-          <el-checkbox label="运费（近转运输、长途运输）" name="type"></el-checkbox>
-          <el-checkbox label="果子钱" name="type"></el-checkbox>
-          <el-checkbox label="其它开支" name="type"></el-checkbox>
-        </el-checkbox-group>
+      <el-form-item label="产品种类">
+        <el-radio-group v-model="form.type">
+          <el-radio label="苹果" name="type"></el-radio>
+          <el-radio label="橘子" name="type"></el-radio>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="采购数量(斤)">
+        <el-input-number v-model="form.num" :min="1" :max="10" label="销售数量(斤)"></el-input-number>
+      </el-form-item>
+      <el-form-item label="采购单价(元/斤)">
+        <el-input-number v-model="form.num" :min="1" :max="10" label="销售单价(元/斤)"></el-input-number>
+      </el-form-item>
+      <el-form-item label="采购金额">
+        <el-input-number v-model="form.num" :min="1" :max="10" label="销售单价(元/斤)"></el-input-number>
       </el-form-item>
       <el-form-item label="备注">
         <el-input type="textarea" v-model="form.desc"></el-input>
@@ -34,27 +37,31 @@
 </template>
 <script>
 export default {
-name: 'out',
-data() {
+  name: "out",
+  data() {
     return {
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        }
+      form: {
+        name: "",
+        region: "",
+        date1: "",
+        date2: "",
+        delivery: false,
+        type: [],
+        resource: "",
+        desc: "",
+        num: 1
       }
-    },
-methods: {
+    };
+  },
+  created() {
+    
+  },
+  methods: {
     onSubmit() {
-        console.log('submit!')
-      }
+      console.log("submit!");
     }
-}
+  }
+};
 </script>
 <style>
 </style>

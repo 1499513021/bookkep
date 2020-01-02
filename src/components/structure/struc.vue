@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="footer">
-            <router-link to="/Turnover"><img src="@/assets/img/list.png" alt="" srcset="">账单</router-link>
-            <router-link to="/Bill"><img src="@/assets/img/edit.png" alt="" srcset="">记账</router-link>
+            <router-link to="/Turnover" :class="[this.$route.meta.index==0?'active':'']"><img src="@/assets/img/list.png" alt="" srcset="">账单</router-link>
+            <router-link to="/Bill/out" :class="[this.$route.meta.index==1?'active':'']"><img src="@/assets/img/edit.png" alt="" srcset="">记账</router-link>
              <router-link to="/Bill"><img src="@/assets/img/library.png" alt="" srcset="">库存</router-link>
             <router-link to="/Turnover"><img src="@/assets/img/user.png" alt="" srcset="">我的</router-link>
         </div>
@@ -10,12 +10,20 @@
 </template>
 <script>
 export default {
-  name: 'Struc'
+  name: 'Struc',
+  created(){
+      console.log()
+    //   
+  }
 }
 </script>
 <style scoped>
+    .active{
+        background: #ccc;
+    }
     .footer{
         /* height: 5rem; */
+        border-top: 1px solid #ccc;
         width: 100%;
         position: fixed;
         bottom: 0;

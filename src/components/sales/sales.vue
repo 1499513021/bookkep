@@ -10,13 +10,20 @@
           <el-option label="欠账" value="beijing"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="市场开支">
-        <el-checkbox-group v-model="form.type">
-          <el-checkbox label="场地费、其它" name="type"></el-checkbox>
-          <el-checkbox label="人工费" name="type"></el-checkbox>
-          <el-checkbox label="生活费" name="type"></el-checkbox>
-          <el-checkbox label="其它开支" name="type"></el-checkbox>
-        </el-checkbox-group>
+      <el-form-item label="产品种类">
+        <el-radio-group v-model="form.type">
+          <el-radio label="苹果" name="type"></el-radio>
+          <el-radio label="橘子" name="type"></el-radio>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="销售数量(斤)">
+        <el-input-number v-model="form.num" :min="1" :max="10" label="销售数量(斤)"></el-input-number>
+      </el-form-item>
+      <el-form-item label="销售单价(元/斤)">
+        <el-input-number v-model="form.num" :min="1" :max="10" label="销售单价(元/斤)"></el-input-number>
+      </el-form-item>
+      <el-form-item label="销售金额">
+        <el-input-number v-model="form.num" :min="1" :max="10" label="销售单价(元/斤)"></el-input-number>
       </el-form-item>
       <el-form-item label="备注">
         <el-input type="textarea" v-model="form.desc"></el-input>
@@ -30,27 +37,37 @@
 </template>
 <script>
 export default {
-  name: 'sales',
+  name: "sales",
   data() {
     return {
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        }
+      form: {
+        name: "",
+        region: "",
+        date1: "",
+        date2: "",
+        delivery: false,
+        type: [],
+        resource: "",
+        desc: "",
+        num: 1
       }
-    },
-methods: {
+    };
+  },
+  created() {
+    
+  },
+  methods: {
     onSubmit() {
-        console.log('submit!')
-      }
+      console.log("submit!");
     }
+  }
 };
 </script>
 <style>
+.el-form-item__label {
+  width: 120px !important;
+}
+.el-form-item__content {
+  margin-left: 120px !important;
+}
 </style>

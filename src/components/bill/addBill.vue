@@ -1,20 +1,26 @@
 <template>
     <div>
         <div class="header">
-            <router-link to="/Bill/out">采购</router-link>
-            <router-link to="/Bill/sales">销售</router-link>
-            <router-link to="/Bill/sales">生活开支</router-link>
+            <router-link :class="[this.$route.meta.lower==0?'active':'']" to="/Bill/out">采购</router-link>
+            <router-link :class="[this.$route.meta.lower==1?'active':'']" to="/Bill/sales">销售</router-link>
+            <router-link :class="[this.$route.meta.lower==2?'active':'']" to="/Bill/life">生活开支</router-link>
         </div>
         <router-view></router-view>
     </div>
 </template>
 <script>
 export default {
-  name: 'bill'
+  name: 'bill',
+  created(){
+      
+  }
 }
 </script>
 
 <style lang="">
+.active{
+    background: #ccc;
+}
 .header{
     height: 3rem;
     width: 100%;

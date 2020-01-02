@@ -8,25 +8,49 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/Turnover'
+      redirect: '/Turnover',
+      meta: {
+        index:0
+      }
     },
     {
       path: '/Turnover',
       name: 'Turnover',
+      meta: {
+        index:0
+      },
       component: Turnover
     },
     {
       path: '/Bill',
       name: 'Bill',
+      meta: {
+        index:1
+      },
       component: (resolve) => require(['../components/bill/addBill'], resolve),
       children: [
         {
-          path: '/Bill/out',
-          component: (resolve) => require(['../components/out/out'], resolve)
+          path: '',
+          component: (resolve) => require(['../components/out/out'], resolve),
         },
         {
-          path: '/Bill/sales',
-          component: (resolve) => require(['../components/sales/sales'],resolve)
+          path: 'out',
+          component: (resolve) => require(['../components/out/out'], resolve),
+          meta: {index:1,lower:0}
+        },
+        {
+          path: 'sales',
+          component: (resolve) => require(['../components/sales/sales'],resolve),
+          meta: {index:1,lower:1}
+        },
+        {
+          path: 'life',
+          component: (resolve) => require(['../components/life/life'],resolve),
+          meta: {index:1,lower:2}
+        },
+        {
+          path: '/Bill/test',
+          component: (resolve) => require(['../components/test/test'],resolve)
         }
       ]
     }
