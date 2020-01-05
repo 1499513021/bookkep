@@ -19,7 +19,33 @@ export default new Router({
       meta: {
         index:0
       },
-      component: Turnover
+      component: Turnover,
+      children:[
+        {
+          path: '',
+          component: (resolve) => require(['../components/billList/billList'], resolve),
+          meta: {
+            index:0,
+            listTit: 1
+          },
+        },
+        {
+          path: 'invoice',
+          component: (resolve) => require(['../components/invoice/invoice'], resolve),
+          meta: {
+            index:0,
+            listTit: 2
+          },
+        },
+        {
+          path: 'list',
+          component: (resolve) => require(['../components/billList/billList'], resolve),
+          meta: {
+            index:0,
+            listTit: 1
+          },
+        }
+      ]
     },
     {
       path: '/Bill',
