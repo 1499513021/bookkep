@@ -1,10 +1,8 @@
 <template>
-  <div id="invoiceBox">
+  <div id="fruit">
     <el-table :data="tableData" border style="width: 100%">
-      <el-table-column prop="date" label="日期" width></el-table-column>
-      <el-table-column prop="num" label="金额" width></el-table-column>
-      <el-table-column prop="name" label="执行人" width></el-table-column>
-      <el-table-column prop="address" label="是否到账"></el-table-column>
+      <el-table-column prop="date" label="品种" width></el-table-column>
+      <el-table-column prop="num" label="剩余库存(斤)" width></el-table-column>
       <el-table-column prop="edit" label="操作"></el-table-column>
     </el-table>
   </div>
@@ -15,28 +13,28 @@ export default {
     return {
       tableData: [
         {
-          date: "2016-05-02",
+          date: "苹果",
           name: "王小虎",
           num: 1000,
           address: "未到账",
           edit: <router-link to="/">查看</router-link>
         },
         {
-          date: "2016-05-02",
+          date: "橘子",
           name: "王小虎",
           num: 1000,
           address: "未到账",
           edit: <router-link to="/">查看</router-link>
         },
         {
-          date: "2016-05-02",
+          date: "香蕉",
           name: "王小虎",
           num: 1000,
           address: "未到账",
           edit: <router-link to="/">查看</router-link>
         },
         {
-          date: "2016-05-02",
+          date: "甘蔗",
           name: "王小虎",
           num: 1000,
           address: "未到账",
@@ -48,7 +46,7 @@ export default {
 };
 </script>
 <style lang="">
-#invoiceBox {
+#fruit {
   margin: 5px;
 }
 </style>

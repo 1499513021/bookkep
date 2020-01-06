@@ -1,0 +1,12 @@
+.el-form-item__label {
+width: 120px !important;
+}
+.el-form-item__content {
+margin-left: 120px !important;
+}
+.el-textarea{
+width: 90%;
+}
+input::-webkit-input-placeholder {
+font-size: 14px;
+}

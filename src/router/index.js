@@ -23,11 +23,7 @@ export default new Router({
       children:[
         {
           path: '',
-          component: (resolve) => require(['../components/billList/billList'], resolve),
-          meta: {
-            index:0,
-            listTit: 1
-          },
+          redirect: '/Turnover/list',
         },
         {
           path: 'invoice',
@@ -57,7 +53,7 @@ export default new Router({
       children: [
         {
           path: '',
-          component: (resolve) => require(['../components/out/out'], resolve),
+          redirect: '/Bill/out'
         },
         {
           path: 'out',
@@ -79,6 +75,39 @@ export default new Router({
           component: (resolve) => require(['../components/test/test'],resolve)
         }
       ]
+    },
+    {
+      path: '/House',
+      component: (resolve) => require(['../components/house/house'],resolve),
+      children:[
+        {
+          path: '',
+          redirect: '/House/graphics',
+        },
+        {
+          path: 'fruit',
+          component: (resolve) => require(['../components/fruitList/fruitList'],resolve),
+          meta: {
+            index:2,
+            house:2
+          },
+        },
+        {
+          path: 'graphics',
+          component: (resolve) => require(['../components/echarts/graphics'],resolve),
+          meta: {
+            index:2,
+            house:1
+          },
+        }
+      ]
+    },
+    {
+      path: '/user',
+      component: (resolve) => require(['../components/user/user'],resolve),
+      meta:{
+        index: 3
+      }
     }
   ]
 })

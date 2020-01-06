@@ -2,8 +2,8 @@
   <div>
     <div class="keepTit">
       <div class="keepMenu">
-        <router-link :class="[this.$route.meta.listTit==1?'active':'']" to="/Turnover/list">账目记录</router-link>
-        <router-link :class="[this.$route.meta.listTit==2?'active':'']" to="/Turnover/invoice">欠账记录</router-link>
+        <router-link :class="[this.$route.meta.house==1?'active':'']" to="/House/graphics">统计</router-link>
+        <router-link :class="[this.$route.meta.house==2?'active':'']" to="/House/fruit">库存</router-link>
       </div>     
     </div>
     <router-view></router-view>

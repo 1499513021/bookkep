@@ -22,7 +22,7 @@
         </el-checkbox-group>
       </el-form-item>
       <el-form-item label="备注">
-        <el-input type="textarea" v-model="form.desc"></el-input>
+        <el-input :autosize="{ minRows: 4, maxRows: 10}" type="textarea" v-model="form.desc"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary">立即创建</el-button>
@@ -53,3 +53,6 @@ export default {
   }
 };
 </script>
+<style lang="">
+  @import "../../assets/css/customUI.css";
+</style>

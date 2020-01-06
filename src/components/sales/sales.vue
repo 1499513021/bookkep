@@ -26,7 +26,7 @@
         <el-input-number v-model="form.num" :min="1" :max="10" label="销售单价(元/斤)"></el-input-number>
       </el-form-item>
       <el-form-item label="备注">
-        <el-input type="textarea" v-model="form.desc"></el-input>
+        <el-input :autosize="{ minRows: 4, maxRows: 10}" type="textarea" v-model="form.desc"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
@@ -64,10 +64,5 @@ export default {
 };
 </script>
 <style>
-.el-form-item__label {
-  width: 120px !important;
-}
-.el-form-item__content {
-  margin-left: 120px !important;
-}
+@import "../../assets/css/customUI.css";
 </style>

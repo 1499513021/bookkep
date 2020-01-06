@@ -19,7 +19,34 @@
             <dd>10000</dd>
           </dl>
         </div>
+        <div class="keepbtn">
+          <el-button type="primary">账单明细</el-button>
+        </div>
       </div>
+      <!-- ============== -->
+      <div class="keepBox">
+        <div class="keepTime">2020-01-01</div>
+        <div class="keepBody">
+          <dl>
+            <dt>收入(元)</dt>
+            <dd>111</dd>
+          </dl>
+          <dl>
+            <dt>支出(元)</dt>
+            <dd>1111</dd>
+          </dl>
+        </div>
+        <div>
+          <dl class="keepEnd">
+            <dt>合计盈亏(元):</dt>
+            <dd>10000</dd>
+          </dl>
+        </div>
+        <div class="keepbtn">
+          <el-button type="primary">账单明细</el-button>
+        </div>
+      </div>
+      <!-- ============ -->
     </div>
   </div>
 </template>
@@ -43,6 +70,7 @@
 .keepBox {
   border: 1px solid #cccccc;
   border-radius: 5px;
+  margin-bottom: 20px;
   /* margin-top: 40px; */
 }
 .keepTime {
@@ -76,9 +104,13 @@
   justify-content: space-between;
   align-items: center;
 }
-.keepEnd dt,
-dd {
+.keepEnd dt,dd {
   flex: 1;
   margin: 10px auto;
+  /*  */
+}
+.keepbtn{
+  padding: 10px;
+  border-top: 1px solid #cccccc;
 }
 </style>

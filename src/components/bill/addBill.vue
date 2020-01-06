@@ -18,9 +18,7 @@ export default {
 </script>
 
 <style lang="">
-.active{
-    background: #ccc;
-}
+@import "../../assets/css/public.css";
 .header{
     height: 3rem;
     width: 100%;

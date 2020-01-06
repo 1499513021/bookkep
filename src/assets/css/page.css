@@ -3,7 +3,7 @@
     padding: 0;
 }
 a, a:hover, a:visited, a:link, a:active {
-    color:#000;
+    color: #000;
     text-decoration:none;
     outline: none;
     /*  a标签的四种状态都和本身颜色保持一致 */
