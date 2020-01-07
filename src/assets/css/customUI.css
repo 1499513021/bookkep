@@ -5,7 +5,7 @@ width: 120px !important;
 margin-left: 120px !important;
 }
 .el-textarea{
-width: 90%;
+width: 90% !important;
 }
 input::-webkit-input-placeholder {
 font-size: 14px;
