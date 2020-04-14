@@ -13,6 +13,19 @@ export default new Router({
         index: 0
       }
     },
+    // 登录页面
+    {
+      path: '/login',
+      component: (resolve) => require(['../components/login/login'],resolve)
+    },
+    // 首页路由
+    {
+      path: '/home',
+      component: (resolve) => require(['../components/home/home'],resolve),
+      meta:{
+
+      }
+    },
     {
       path: '/test',
       component: (resolve) => require(['../components/test/pra'], resolve),
@@ -20,6 +33,7 @@ export default new Router({
         index: 1
       }
     },
+    // 账单路由
     {
       path: '/Turnover',
       name: 'Turnover',
@@ -50,6 +64,7 @@ export default new Router({
         }
       ]
     },
+    // 记账路由
     {
       path: '/Bill',
       name: 'Bill',
@@ -79,6 +94,7 @@ export default new Router({
         }
       ]
     },
+    // 库存路由
     {
       path: '/House',
       component: (resolve) => require(['../components/house/house'], resolve),
@@ -105,6 +121,7 @@ export default new Router({
         }
       ]
     },
+    // 个人信息路由
     {
       path: '/user',
       component: (resolve) => require(['../components/user/user'], resolve),

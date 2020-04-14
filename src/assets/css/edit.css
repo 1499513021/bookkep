@@ -1,0 +1,14 @@
+form{
+    margin-bottom: 60px;
+  }
+  .file_hide {
+    display: none;
+  }
+  .preview {
+    max-width: 100px;
+    max-height: 100px;
+    display: block;
+    margin: auto;
+    border: 1px solid #dcdfe6;
+    border-radius: 5px;
+  }

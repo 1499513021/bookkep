@@ -10,3 +10,6 @@ width: 90% !important;
 input::-webkit-input-placeholder {
 font-size: 14px;
 }
+.custom {
+    width: 217px !important;
+  }

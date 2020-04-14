@@ -21,6 +21,18 @@
           <el-checkbox label="其它开支" name="type"></el-checkbox>
         </el-checkbox-group>
       </el-form-item>
+      <el-form-item label="支付/收据截图">
+        <input
+          @change="getFile"
+          ref="filElem"
+          id="imgFile"
+          class="file_hide"
+          type="file"
+          value="选择图片"
+        />
+        <el-image v-if="show" class="preview" :src="imgSrc"></el-image>
+        <el-button size="small" type="primary" @click="choiceImg">选择图片</el-button>
+      </el-form-item>
       <el-form-item label="备注">
         <el-input :autosize="{ minRows: 4, maxRows: 10}" type="textarea" v-model="form.desc"></el-input>
       </el-form-item>
@@ -45,14 +57,48 @@ export default {
         type: [],
         resource: "",
         desc: ""
-      }
+      },
+      imgSrc: "",
+      show: false
     };
   },
-  created() {
-    
+  created() {},
+  methods: {
+    choiceImg() {
+      this.$refs.filElem.dispatchEvent(new MouseEvent("click"));
+    },
+    getFile() {
+      var that = this;
+      const inputFile = this.$refs.filElem.files[0];
+      console.log(inputFile);
+      if (inputFile) {
+        if (
+          inputFile.type !== "image/jpeg" &&
+          inputFile.type !== "image/png" &&
+          inputFile.type !== "image/gif"
+        ) {
+          alert("不是有效的图片文件！");
+          return;
+        }
+        this.imgInfo = Object.assign({}, this.imgInfo, {
+          name: inputFile.name,
+          size: inputFile.size,
+          lastModifiedDate: inputFile.lastModifiedDate.toLocaleString()
+        });
+        const reader = new FileReader();
+        reader.readAsDataURL(inputFile);
+        reader.onload = function(e) {
+          that.imgSrc = this.result;
+          that.show = true;
+        };
+      } else {
+        return;
+      }
+    }
   }
 };
 </script>
 <style lang="">
-  @import "../../assets/css/customUI.css";
+@import "../../assets/css/customUI.css";
+@import "../../assets/css/edit.css";
 </style>
