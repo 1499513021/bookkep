@@ -15,7 +15,7 @@ Vue.prototype.$echarts = echarts
 Vue.use(ElementUI),
 
 Vue.use(Vuex)
-
+axios.defaults.baseURL = "http://192.168.0.1:8080"
 Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false

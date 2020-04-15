@@ -18,6 +18,11 @@ export default new Router({
       path: '/login',
       component: (resolve) => require(['../components/login/login'],resolve)
     },
+    // 注册页面
+    {
+      path: '/register',
+      component: (resolve) => require(['../components/login/register'],resolve)
+    },
     // 首页路由
     {
       path: '/home',

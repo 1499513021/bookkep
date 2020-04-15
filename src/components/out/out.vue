@@ -85,7 +85,10 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("submit!");
+      let that = this
+      let formData = new FormData()
+      formData.append("data",that.form.data1)
+      console.log(formData)
     },
     choiceImg() {
       this.$refs.filElem.dispatchEvent(new MouseEvent("click"));

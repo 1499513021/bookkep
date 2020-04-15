@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <!-- <div class="home">
     <router-link tag="div" to="/Bill" class="home_item">
       <img src="../../assets/img/new.png" />
       <div>记账</div>
@@ -16,28 +16,53 @@
       <img src="../../assets/img/table.png" />
       <div>数据表</div>
     </router-link>
+  </div>-->
+  <div class="box">
+    <div class="homebox">
+      <div class="home">
+        <router-link tag="div" to="/Bill" class="home_item">
+          <img src="../../assets/img/new.png" />
+          <div>记账</div>
+        </router-link>
+        <router-link tag="div" to="/Turnover" class="home_item">
+          <img src="../../assets/img/order.png" />
+          <div>账单</div>
+        </router-link>
+        <router-link tag="div" to="/House" class="home_item">
+          <img src="../../assets/img/library1.png" />
+          <div>库存</div>
+        </router-link>
+        <router-link tag="div" to="/user" class="home_item">
+          <img src="../../assets/img/table.png" />
+          <div>数据表</div>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 export default {
   name: "home",
   data() {
-    return {
-     
-    };
+    return {};
   },
   methods: {},
   beforeRouteEnter(to, from, next) {
+    let bodyDom = window.document.body;
     let note = {
-        backgroundImage: "url(" + require("../../assets/img/bg.jpg") + ")"
-      }
+      backgroundImage: "url(" + require("../../assets/img/bg.jpg") + ")"
+    };
     // ...
-    window.document.body.style.background=note.backgroundImage
+    bodyDom.style.background = note.backgroundImage;
+    bodyDom.style.display = "flex";
+    bodyDom.style.justifyContent = "center";
+    bodyDom.style.alignContent = "center";
+    bodyDom.style.alignItems = "center";
     next();
   },
-  beforeRouteLeave (to, from, next) {
+  beforeRouteLeave(to, from, next) {
     // ...
-    window.document.body.style.background='';
+    window.document.body.style.background = "";
     next();
   }
 };
@@ -47,6 +72,7 @@ export default {
 @import "../../assets/css/public.css";
 
 .home {
+  height: 100%;
   color: #fff;
   display: flex;
   display: -webkit-flex;
@@ -56,7 +82,7 @@ export default {
   align-items: center;
   width: 90%;
   margin: auto;
-  margin-top: 50%;
+  /* margin-top: 50%; */
   align-content: center;
 }
 .home_item {
@@ -71,5 +97,22 @@ export default {
 }
 .home_item img {
   margin-top: 20px;
+}
+.bodySty {
+  height: 100%;
+  display: flex;
+}
+
+.box {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top:0;
+}
+.homebox {
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 </style>

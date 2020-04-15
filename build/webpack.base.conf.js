@@ -3,6 +3,8 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const DEV_HOST = JSON.stringify('http://192.168.0.1：8080')
+const PUB_HOST = JSON.stringify('http://{部署服务器ip和端口}')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -39,6 +41,11 @@ module.exports = {
       '@': resolve('src'),
     }
   },
+  // plugins: [
+  //   new webpack.DefinePlugin({
+  //     HOST: process.env.NODE_ENV === 'production' ? PUB_HOST : DEV_HOST
+  //   })
+  // ],
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
