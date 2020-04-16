@@ -20,21 +20,21 @@
   <div class="box">
     <div class="homebox">
       <div class="home">
-        <router-link tag="div" to="/Bill" class="home_item">
+        <router-link tag="div" to="/intoPage/Bill" class="home_item">
           <img src="../../assets/img/new.png" />
           <div>记账</div>
         </router-link>
-        <router-link tag="div" to="/Turnover" class="home_item">
+        <router-link tag="div" to="/intoPage/Turnover" class="home_item">
           <img src="../../assets/img/order.png" />
           <div>账单</div>
         </router-link>
-        <router-link tag="div" to="/House" class="home_item">
+        <router-link tag="div" to="/intoPage/House" class="home_item">
           <img src="../../assets/img/library1.png" />
           <div>库存</div>
         </router-link>
-        <router-link tag="div" to="/user" class="home_item">
+        <router-link tag="div" to="/intoPage/user" class="home_item">
           <img src="../../assets/img/table.png" />
-          <div>数据表</div>
+          <div>数据统计</div>
         </router-link>
       </div>
     </div>

@@ -16,17 +16,17 @@ export default {
       tabList: [
         {
           name: "采购",
-          url: "/Bill/out",
+          url: "/intoPage/Bill/out",
           index: 0
         },
         {
           name: "销售",
-          url: "/Bill/sales",
+          url: "/intoPage/Bill/sales",
           index: 1
         },
         {
           name: "生活开支",
-          url: "/Bill/life",
+          url: "/intoPage/Bill/life",
           index: 2
         }
       ]

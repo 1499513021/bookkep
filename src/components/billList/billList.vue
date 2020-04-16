@@ -20,7 +20,9 @@
           </dl>
         </div>
         <div class="keepbtn">
-          <el-button type="primary">账单明细</el-button>
+          <router-link to="/intoPage/detaile">
+            <el-button type="primary">账单明细</el-button>
+          </router-link>
         </div>
       </div>
       <!-- ============== -->
@@ -43,7 +45,9 @@
           </dl>
         </div>
         <div class="keepbtn">
-          <el-button type="primary">账单明细</el-button>
+          <router-link to="/intoPage/detaile">
+            <el-button type="primary">账单明细</el-button>
+          </router-link>
         </div>
       </div>
       <!-- ============ -->
@@ -104,12 +108,13 @@
   justify-content: space-between;
   align-items: center;
 }
-.keepEnd dt,dd {
+.keepEnd dt,
+dd {
   flex: 1;
   margin: 10px auto;
   /*  */
 }
-.keepbtn{
+.keepbtn {
   padding: 10px;
   border-top: 1px solid #cccccc;
 }

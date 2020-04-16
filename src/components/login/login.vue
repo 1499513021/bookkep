@@ -49,6 +49,7 @@ export default {
   methods: {
     submit(form){
       let that = this;
+      this.$router.push("/home")
       this.$refs[form].validate(valid => {
         if (valid) {
           that.axios("/custom/login", {

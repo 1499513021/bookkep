@@ -19,28 +19,28 @@ export default {
           name: "王小虎",
           num: 1000,
           address: "未到账",
-          edit: <router-link to="/">查看</router-link>
+          edit: <router-link to="/intoPage/invoiceDeta">查看</router-link>
         },
         {
           date: "2016-05-02",
           name: "王小虎",
           num: 1000,
           address: "未到账",
-          edit: <router-link to="/">查看</router-link>
+          edit: <router-link to="/intoPage/invoiceDeta">查看</router-link>
         },
         {
           date: "2016-05-02",
           name: "王小虎",
           num: 1000,
           address: "未到账",
-          edit: <router-link to="/">查看</router-link>
+          edit: <router-link to="/intoPage/invoiceDeta">查看</router-link>
         },
         {
           date: "2016-05-02",
           name: "王小虎",
           num: 1000,
           address: "未到账",
-          edit: <router-link to="/">查看</router-link>
+          edit: <router-link to="/intoPage/invoiceDeta">查看</router-link>
         }
       ]
     };

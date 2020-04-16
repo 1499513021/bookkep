@@ -20,7 +20,7 @@ export default {
       let myChart = this.$echarts.init(document.getElementById("myChart"));
       let option = {
         title: {
-          text: "水果统计(斤)",
+          text: "水果统计(件)",
           subtext: "数据来自网络"
         },
         tooltip: {

@@ -18,13 +18,13 @@ export default {
     return {
       tabList: [
         {
-          name: "账目记录",
-          url: "/Turnover/list",
+          name: "账单记录",
+          url: "/intoPage/Turnover/list",
           index: 1
         },
         {
           name: "欠账记录",
-          url: "/Turnover/invoice",
+          url: "/intoPage/Turnover/invoice",
           index: 2
         }
       ]

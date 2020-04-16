@@ -38,7 +38,7 @@ export default {
       tabList: [
         {
           name: "个人中心",
-          url: '/user',
+          url: '/intoPage/user',
           index: 11
         }
       ]
@@ -127,7 +127,7 @@ export default {
   }
 };
 </script>
-<style lang="">
+<style lang="" scoped>
 #user {
   color: #606266;
 }

@@ -2,8 +2,7 @@
   <div id="fruit">
     <el-table :data="tableData" border style="width: 100%">
       <el-table-column prop="date" label="品种" width></el-table-column>
-      <el-table-column prop="num" label="剩余库存(斤)" width></el-table-column>
-      <el-table-column prop="edit" label="操作"></el-table-column>
+      <el-table-column prop="num" label="剩余库存(件)" width></el-table-column>
     </el-table>
   </div>
 </template>

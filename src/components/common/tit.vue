@@ -40,7 +40,7 @@ export default {
   methods: {}
 };
 </script>
-<style lang="">
+<style lang="" scoped>
 @import "../../assets/css/public.css";
 .keepMenu {
   display: flex;
@@ -52,8 +52,11 @@ export default {
   flex: 1;
   color: coral;
 }
-.keepMenu a:nth-child(1) {
+.keepMenu a:nth-child(n) {
   border-right: 1px solid #cccccc;
+}
+.keepMenu a:last-child{
+   border: none;
 }
 .keepTit {
   height: 40px;

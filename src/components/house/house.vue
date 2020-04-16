@@ -15,12 +15,12 @@ export default {
       tabList: [
         {
           name: "统计",
-          url: "/House/graphics",
+          url: "/intoPage/House/graphics",
           index: 1
         },
         {
           name: "库存",
-          url: "/House/fruit",
+          url: "/intoPage/House/fruit",
           index: 2
         }
       ]
