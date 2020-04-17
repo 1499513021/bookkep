@@ -2,7 +2,16 @@
   <div id="user">
     <tit :tabList="tabList"></tit>
     <div>
-      <!-- <div>当前用户：151233232121</div> -->
+      <div class="user_card">
+        <div class="clearfix">
+          <dir class="left_tit">用户</dir>
+          <dir class="right_con">李先生</dir>
+        </div>
+        <div class="clearfix">
+          <dir class="left_tit">电话</dir>
+          <dir class="right_con">151002121223</dir>
+        </div>
+      </div>
       <ul>
         <li>
           <img src="../../assets/img/out.png" />
@@ -38,7 +47,7 @@ export default {
       tabList: [
         {
           name: "个人中心",
-          url: '/intoPage/user',
+          url: "/intoPage/user",
           index: 11
         }
       ]
@@ -128,6 +137,40 @@ export default {
 };
 </script>
 <style lang="" scoped>
+.clearfix:after {
+  /*伪元素是行内元素 正常浏览器清除浮动方法*/
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.user_card {
+  width: 85%;
+  margin: auto;
+  height: 100px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: content-box;
+  padding: 0 10px;
+}
+.user_card div:first-child {
+  border-bottom: 1px solid #cccccc;
+}
+.left_tit {
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+}
+.right_con {
+  color: #409EFF;
+  float: right;
+  height: 50px;
+  line-height: 50px;
+  width: 70%;
+  text-align: center;
+}
 #user {
   color: #606266;
 }

@@ -52,6 +52,14 @@ let routerList = [
       lower: 2
     },
   },
+  {
+    path: 'invoiceEdit',//欠账还款
+    component: (resolve) => require(['../components/invoice/invoiceEdit'], resolve),
+    meta: {
+      index: 0,
+      lower: 2
+    },
+  },
   // 记账路由
   {
     path: 'Bill',

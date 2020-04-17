@@ -6,6 +6,9 @@
         <el-form-item label="账号" prop="user">
           <el-input placeholder="填写注册账号" v-model="ruleForm.user"></el-input>
         </el-form-item>
+        <el-form-item label="账号" prop="user">
+          <el-input placeholder="填写姓名" v-model="ruleForm.user"></el-input>
+        </el-form-item>
         <el-form-item label="密码" prop="pass">
           <el-input placeholder="输入密码" type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
         </el-form-item>
@@ -29,7 +32,7 @@ export default {
   data() {
     var validateUser = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请输入账号"));
+        callback(new Error("不能为空"));
       }
         callback();
     };

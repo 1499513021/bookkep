@@ -12,6 +12,10 @@
           <div class="right_con">{{size}}</div>
         </li>
         <li>
+          <div class="left_tit">是否到账</div>
+          <div class="right_con">未到账</div>
+        </li>
+        <li>
           <div class="left_tit">操作人</div>
           <div class="right_con">{{user}}</div>
         </li>
@@ -29,6 +33,13 @@
         </li>
         <li class="clearfix">
           <div class="left_tit">欠款凭证</div>
+          <div class="right_con">
+            <img class="img" :src="src" alt="加载失败" srcset />
+          </div>
+          <!-- <div style="clear:both"></div> -->
+        </li>
+        <li class="clearfix">
+          <div class="left_tit">收款截图</div>
           <div class="right_con">
             <img class="img" :src="src" alt="加载失败" srcset />
           </div>
