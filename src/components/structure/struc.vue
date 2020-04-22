@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="footer">
+    <div  class="footerBox">
+      <div class="footer">
       <router-link to="/home" :class="[this.$route.meta.index==4?'active':'']">
         <!-- <img src="@/assets/img/home.png" alt srcset /> -->
         <i class="el-icon-menu"></i>
@@ -26,6 +27,7 @@
         <i class="el-icon-user"></i>
         我的
       </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -40,12 +42,15 @@ export default {
 </script>
 <style scoped>
 @import "../../assets/css/public.css";
+.footerBox{
+  position: fixed;bottom: 0;width:100%;z-index: 9999999999999;height: 3.5rem;-webkit-transform: translateZ(0);
+}
 .footer {
-  /* height: 5rem; */
+  height: 100%;
   border-top: 1px solid #ccc;
   width: 100%;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed; */
+  /* bottom: 0; */
   display: flex;
   display: -webkit-flex;
   justify-content: space-around;
@@ -53,6 +58,7 @@ export default {
   z-index: 9999999;
   background: #fff;
   font-size: 14px;
+  /* position: absolute; */
 }
 .footer a {
   flex: 1;
