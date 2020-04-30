@@ -11,7 +11,7 @@ export default {
   name: 'App',
   components: {
     Struc
-  }
+  },
 }
 </script>
 <style>
@@ -24,5 +24,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   width: 100%;
+  margin-bottom: 100px;
 }
 </style>

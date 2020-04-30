@@ -5,11 +5,12 @@
       <ul>
         <li>
           <div class="left_tit">交易日期</div>
-          <div class="right_con">{{time}}</div>
+          <div class="right_con">{{billData.createTime | formatDate}}</div>
         </li>
         <li>
           <div class="left_tit">交易金额</div>
-          <div class="right_con">{{size}}</div>
+          <div v-if="!isShow" class="right_con">{{billData.orderInfo.actualPrice}}</div>
+          <div v-if="isShow" class="right_con">{{billData.marketInfo.amount}}</div>
         </li>
         <li>
           <div class="left_tit">交易方式</div>
@@ -17,34 +18,38 @@
         </li>
         <li>
           <div class="left_tit">交易类型</div>
-          <div class="right_con">{{type}}</div>
+          <div v-if="!isShow" class="right_con">{{billData.orderInfo.type=="purchase"?"采购":"销售"}}</div>
+          <div v-if="isShow" class="right_con">生活开支</div>
         </li>
         <li>
           <div class="left_tit">操作人</div>
-          <div class="right_con">{{user}}</div>
+          <div class="right_con">{{JSON.parse(this.$store.getters.userMsg).userName}}</div>
         </li>
-        <li>
+        <li v-if="!isShow">
           <div class="left_tit">联系电话</div>
-          <div class="right_con">{{phone}}</div>
+          <div class="right_con">{{billData.orderInfo.manufacturerInfo.userPhone}}</div>
         </li>
-        <li>
+        <li v-if="!isShow">
           <div class="left_tit">商家</div>
-          <div class="right_con">{{custom}}</div>
+          <div class="right_con">{{billData.orderInfo.manufacturerInfo.userName}}</div>
         </li>
         <li>
           <div class="left_tit">商品</div>
-          <div class="right_con">{{goods}}</div>
+          <div v-if="!isShow" class="right_con">{{billData.orderInfo.goodsInfo.goodsName}}</div>
+          <div v-if="isShow" class="right_con">{{billData.marketInfo.payInfo}}</div>
         </li>
         <li class="clearfix">
           <div class="left_tit">付款凭证</div>
           <div class="right_con">
-            <img class="img" :src="src" alt="加载失败" srcset />
+            <img v-if="!isShow" class="img" :src="billData.orderInfo.purchImg" alt="加载失败" srcset />
+            <img v-if="isShow" class="img" :src="billData.marketInfo.marketImg" alt="加载失败" srcset />
           </div>
           <!-- <div style="clear:both"></div> -->
         </li>
         <li>
           <div class="left_tit">备注</div>
-          <div class="right_con">{{remake}}</div>
+          <div v-if="!isShow" class="right_con">{{billData.orderInfo.goodsInfo.goodsRemark}}</div>
+          <div v-if="isShow" class="right_con">{{billData.marketInfo.remark}}</div>
         </li>
       </ul>
     </div>
@@ -55,6 +60,8 @@ import tit from "../common/tit";
 export default {
   data() {
     return {
+      billData:{},
+      isShow:false,
       time: "2020-01-01",
       size: 1000,
       type: 1,
@@ -76,6 +83,34 @@ export default {
   },
   components: {
     tit
+  },
+  filters: {
+      formatDate: function (value) {
+        let date = new Date(value);
+        let y = date.getFullYear();
+        let MM = date.getMonth() + 1;
+        MM = MM < 10 ? ('0' + MM) : MM;
+        let d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        let h = date.getHours();
+        h = h < 10 ? ('0' + h) : h;
+        let m = date.getMinutes();
+        m = m < 10 ? ('0' + m) : m;
+        let s = date.getSeconds();
+        s = s < 10 ? ('0' + s) : s;
+        return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
+      }
+    },
+  created(){
+    let data = JSON.parse(this.$route.query.item)
+    this.billData = data
+    if(this.billData.marketInfo){
+      this.isShow = true
+    }else{
+      this.isShow = false
+    }
+    console.log(this.$route.query.item)
+    console.log(JSON.parse(this.$route.query.item).id)
   }
 };
 </script>

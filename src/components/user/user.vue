@@ -8,19 +8,34 @@
           <dir class="right_con">李先生</dir>
         </div>
         <div class="clearfix">
-          <dir class="left_tit">电话</dir>
+          <dir class="left_tit">账号</dir>
           <dir class="right_con">151002121223</dir>
         </div>
       </div>
+
+      <div class="income_card">
+        <div class="clearfix">
+          <dir class="left_tit">今日收入</dir>
+          <dir class="right_con">{{incomeData.income}}元</dir>
+        </div>
+        <div class="clearfix">
+          <dir class="left_tit">今日支出</dir>
+          <dir style="color:red" class="right_con">{{incomeData.pay}}元</dir>
+        </div>
+        <div class="clearfix">
+          <dir class="left_tit">今日盈亏</dir>
+          <dir class="right_con">{{incomeData.total}}元</dir>
+        </div>
+      </div>
       <ul>
-        <li>
+        <!-- <li>
           <img src="../../assets/img/out.png" />
           <span>支出明细</span>
         </li>
         <li>
           <img src="../../assets/img/into.png" />
           <span>收入明细</span>
-        </li>
+        </li> -->
         <li>
           <div>
             <img src="../../assets/img/statistics.png" />
@@ -50,11 +65,26 @@ export default {
           url: "/intoPage/user",
           index: 11
         }
-      ]
+      ],
+      incomeData:''
     };
   },
   mounted() {
     this.drawLine();
+  },
+  created(){
+    this.axios.get("/bill/selProfitAndLossByCustomId",{
+      params:{
+        "custom_id": JSON.parse(this.$store.getters.userMsg).id
+      }
+      }).then( (res) => {
+        console.log(res)
+        if(res.data.status == 200){
+          this.incomeData = res.data.data
+        }
+      }).catch( () => {
+        console.log("失败")
+      })
   },
   components: {
     tit
@@ -154,6 +184,22 @@ export default {
   box-sizing: content-box;
   padding: 0 10px;
 }
+.income_card {
+  width: 85%;
+  margin: auto;
+  margin-top: 20px;
+  height: 150px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: content-box;
+  padding: 0 10px;
+}
+.income_card div{
+  border-bottom: 1px solid #cccccc;
+}
+.income_card div:last-child {
+  border-bottom: none;
+}
 .user_card div:first-child {
   border-bottom: 1px solid #cccccc;
 }
@@ -170,6 +216,7 @@ export default {
   line-height: 50px;
   width: 70%;
   text-align: center;
+  overflow: hidden;
 }
 #user {
   color: #606266;

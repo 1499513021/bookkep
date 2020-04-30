@@ -4,10 +4,10 @@
       <el-form ref="form" :rules="rules"  :model="form" label-width="80px">
         <h3 class="tit">登录记账系统</h3>
         <el-form-item label="登录名" prop="name">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+          <el-input v-model="form.name" name="user_phone" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pass">
-          <el-input type="password" v-model="form.pass"></el-input>
+          <el-input type="password" name="user_password" v-model="form.pass"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submit('form')">登录</el-button>
@@ -47,21 +47,25 @@ export default {
     bgFunc.Leave(to, from, next);
   },
   methods: {
-    submit(form){
+    submit(form1){
+      let formDom  = this.$refs.form;
+      let loginData = new FormData(formDom.$el);
       let that = this;
-      this.$router.push("/home")
-      this.$refs[form].validate(valid => {
+      // this.$router.push("/home")
+      formDom.validate(valid => {
         if (valid) {
-          that.axios("/custom/login", {
-            "user_phone": that.ruleForm.user,
-            "user_password": that.ruleForm.pass
-          }).then((res) => {
-
+          that.axios.post("/custom/login", loginData).then((res) => {
+            console.log(res)
+            if(res.data.status=="200"){
+              // localStorage.setItem("userMsg",JSON.stringify(res.data.data))
+              that.$store.commit("handleUser", JSON.stringify(res.data.data))
+              that.$router.push("/home")
+            }
           }).catch(() => {
-
+            console.log("失败")
           });
         } else {
-          console.log("error submit!!");
+          console.log("校验未通过");
           return false;
         }
       });

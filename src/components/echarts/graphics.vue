@@ -8,11 +8,30 @@ export default {
   name: "hello",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      goods: "",
+      goods_name: '',
+      goods_num: ''
     };
   },
   mounted() {
-    this.drawLine();
+    let that = this
+    this.axios("/goods/selStock").then( res => {
+      console.log(res)
+      if(res.data.status == 200){
+        return that.goods = [...res.data.data]
+      }
+    }).then( (arr) => {
+      that.goods_name = arr.map(function(item){
+        return item.goods_name
+      })
+      that.goods_num = arr.map(function(item){
+        return item.goods_number
+      })
+    }).then(() => {
+      that.drawLine();
+    }).catch(() => {
+      console.log("失败")
+    })
   },
   methods: {
     drawLine() {
@@ -30,7 +49,7 @@ export default {
           }
         },
         legend: {
-          data: ["2011年"]
+          // data: ["2011年"]
         },
         grid: {
           left: "3%",
@@ -44,13 +63,15 @@ export default {
         },
         yAxis: {
           type: "category",
-          data: ["苹果", "橘子", "葡萄", "香蕉", "梨子", "菠萝"]
+          // data: ["苹果", "橘子", "葡萄", "香蕉", "梨子", "菠萝"]
+          data: this.goods_name
         },
         series: [
           {
-            name: "2011年",
+            // name: "2011年",
             type: "bar",
-            data: [1000, 2000, 3000, 4000, 5000, 6000]
+            // data: [1000, 2000, 3000, 4000, 5000, 6000]
+            data: this.goods_num
           }
         ]
       }

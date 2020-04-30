@@ -1,8 +1,8 @@
 <template>
   <div id="fruit">
     <el-table :data="tableData" border style="width: 100%">
-      <el-table-column prop="date" label="品种" width></el-table-column>
-      <el-table-column prop="num" label="剩余库存(件)" width></el-table-column>
+      <el-table-column prop="goods_name" label="品种" width></el-table-column>
+      <el-table-column prop="goods_number" label="剩余库存(件)" width></el-table-column>
     </el-table>
   </div>
 </template>
@@ -11,36 +11,28 @@ export default {
   data() {
     return {
       tableData: [
-        {
-          date: "苹果",
-          name: "王小虎",
-          num: 1000,
-          address: "未到账",
-          edit: <router-link to="/">查看</router-link>
-        },
-        {
-          date: "橘子",
-          name: "王小虎",
-          num: 1000,
-          address: "未到账",
-          edit: <router-link to="/">查看</router-link>
-        },
-        {
-          date: "香蕉",
-          name: "王小虎",
-          num: 1000,
-          address: "未到账",
-          edit: <router-link to="/">查看</router-link>
-        },
-        {
-          date: "甘蔗",
-          name: "王小虎",
-          num: 1000,
-          address: "未到账",
-          edit: <router-link to="/">查看</router-link>
-        }
+        // {
+        //   goods_name: "苹果",
+        //   goods_num: 1000,
+        //   edit: <router-link to="/">查看</router-link>
+        // }
       ]
     };
+  },
+  mounted(){
+    this.goods_list()
+  },
+  methods:{
+    goods_list(){
+      this.axios("/goods/selStock").then((res) => {
+        if(res.data.status == 200){
+          this.tableData = res.data.data
+        }
+        console.log(res)
+      }).catch(() => {
+        console.log("失败")
+      })
+    }
   }
 };
 </script>

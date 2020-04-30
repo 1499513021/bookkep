@@ -4,13 +4,13 @@
       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="80px">
         <h3 class="tit">注册账号</h3>
         <el-form-item label="账号" prop="user">
-          <el-input placeholder="填写注册账号" v-model="ruleForm.user"></el-input>
+          <el-input placeholder="填写注册账号" name="user_phone" v-model="ruleForm.user"></el-input>
         </el-form-item>
-        <el-form-item label="账号" prop="user">
-          <el-input placeholder="填写姓名" v-model="ruleForm.user"></el-input>
+        <el-form-item label="姓名" prop="userName">
+          <el-input name="user_name" placeholder="填写姓名" v-model="ruleForm.userName"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pass">
-          <el-input placeholder="输入密码" type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+          <el-input placeholder="输入密码" type="password" name="user_password" v-model="ruleForm.pass" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="确认密码" prop="checkPass">
           <el-input placeholder="再次确认密码" type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
@@ -59,12 +59,14 @@ export default {
       ruleForm: {
         pass: "",
         checkPass: "",
-        user: ""
+        user: "",
+        userName:''
       },
       rules: {
         pass: [{ validator: validatePass, trigger: "blur" }],
         checkPass: [{ validator: validatePass2, trigger: "blur" }],
-        user: [{ validator: validateUser, trigger: "blur" }]
+        user: [{ validator: validateUser, trigger: "blur" }],
+        userName: [{ validator: validateUser, trigger: "blur" }]
       }
     };
   },
@@ -76,20 +78,25 @@ export default {
   },
   methods: {
     submitForm(formName) {
+      let form = this.$refs.ruleForm.$el;
+      let formData = new FormData(form);
+      console.log(formData)
       let that = this;
       this.$refs[formName].validate(valid => {
         if (valid) {
           console.log(that.ruleForm.user);
-          that.axios("/custom/register", {
-            name: that.ruleForm.user,
-            pass: that.ruleForm.pass
-          }).then((res) => {
-
+          that.axios.post("/custom/register", 
+          formData
+          ).then((res) => {
+            console.log(res)
+            if(res.data.status==200){
+              that.$router.push("/login")
+            }
           }).catch(() => {
-
+            console.log("失败")
           });
         } else {
-          console.log("error submit!!");
+          console.log("校验不通过");
           return false;
         }
       });
