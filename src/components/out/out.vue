@@ -7,7 +7,7 @@
           <el-option label="银行卡" value="2"></el-option>
           <el-option label="支付宝" value="3"></el-option>
           <el-option label="现金" value="4"></el-option>
-          <el-option label="欠账" value="5"></el-option>
+          <!-- <el-option label="欠账" value="5"></el-option> -->
         </el-select>
       </el-form-item>
       <el-form-item label="产品种类">
@@ -82,7 +82,7 @@ export default {
       rules:{
         user_name: [{required: true, message: '请输入客户名', trigger: 'change'}],
         user_phone:[{required: true, message: '请输入电话号码', trigger: 'change'}],
-        imgSrc: [{required: true, message: '请选择支付截图', trigger: 'change'}]
+        imgSrc: [{required: true, message: '请选择支付截图/票据', trigger: 'change'}]
       },
       imgSrc: "",
       show: false

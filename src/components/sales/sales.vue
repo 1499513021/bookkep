@@ -90,7 +90,7 @@ export default {
       rule:{
         user_phone:[{required: true, message: '请输入电话号码', trigger: 'blur'}],
         user_name:[{required: true, message: '请输入客户名', trigger: 'blur'}],
-        imgSrc: [{required: true, message: '请选择支付截图', trigger: 'change'}],
+        imgSrc: [{required: true, message: '请选择支付截图/票据', trigger: 'change'}],
         purch_number:[{validator: validate,trigger: 'change'}]
       },
       imgSrc: "",

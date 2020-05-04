@@ -7,7 +7,7 @@
           <el-option label="银行卡" value="2"></el-option>
           <el-option label="支付宝" value="3"></el-option>
           <el-option label="现金" value="4"></el-option>
-          <el-option label="票据" value="5"></el-option>
+          <!-- <el-option label="票据" value="5"></el-option> -->
         </el-select>
       </el-form-item>
       <el-form-item prop="pay_info" label="市场开支">
@@ -66,7 +66,7 @@ export default {
       },
       rule: {
         pay_info: [{ required: true, message: "请选择市场开支", trigger: "change" }],
-        imgSrc:[{ required: true, message: "请添加支付截图", trigger: "change" }],
+        imgSrc:[{ required: true, message: "请添加支付截图/票据", trigger: "change" }],
       },
       imgSrc: "",
       show: false

@@ -5,11 +5,11 @@
       <div class="user_card">
         <div class="clearfix">
           <dir class="left_tit">用户</dir>
-          <dir class="right_con">李先生</dir>
+          <dir class="right_con">{{JSON.parse(this.$store.getters.userMsg).userName}}</dir>
         </div>
         <div class="clearfix">
           <dir class="left_tit">账号</dir>
-          <dir class="right_con">151002121223</dir>
+          <dir class="right_con">{{JSON.parse(this.$store.getters.userMsg).userPhone}}</dir>
         </div>
       </div>
 
@@ -35,7 +35,7 @@
         <li>
           <img src="../../assets/img/into.png" />
           <span>收入明细</span>
-        </li> -->
+        </li>-->
         <li>
           <div>
             <img src="../../assets/img/statistics.png" />
@@ -51,6 +51,7 @@
           <div id="month" :style="{width: '100%', height: '300px'}"></div>
         </li>
       </ul>
+      <div><button @click="loginOut" class="loginOut">退出登录</button></div>
     </div>
   </div>
 </template>
@@ -66,102 +67,105 @@ export default {
           index: 11
         }
       ],
-      incomeData:''
+      obj: {
+        purchase: "",
+        sale: "",
+        market: "",
+        heji: "",
+        arrears: ""
+      },
+      incomeData: "",
+      custom_id: JSON.parse(this.$store.getters.userMsg).id
     };
   },
-  mounted() {
-    this.drawLine();
-  },
-  created(){
-    this.axios.get("/bill/selProfitAndLossByCustomId",{
-      params:{
-        "custom_id": JSON.parse(this.$store.getters.userMsg).id
-      }
-      }).then( (res) => {
-        console.log(res)
-        if(res.data.status == 200){
-          this.incomeData = res.data.data
+  mounted() {},
+  created() {
+    this.axios
+      .get("/bill/selProfitAndLossByCustomId", {
+        params: {
+          custom_id: this.custom_id
         }
-      }).catch( () => {
-        console.log("失败")
       })
+      .then(res => {
+        console.log(res);
+        if (res.data.status == 200) {
+          this.incomeData = res.data.data;
+        }
+      })
+      .catch(() => {
+        console.log("失败");
+      }),
+      this.weekBook();
+      this.monthBook();
   },
   components: {
     tit
   },
   methods: {
-    drawLine() {
+    loginOut(){
+      localStorage.removeItem("userMsg")
+      this.$router.push('/login')
+    },
+    weekBook() {
+      this.axios
+        .get("/bill/fanChartByCustomId", {
+          params: {
+            custom_id: this.custom_id
+          }
+        })
+        .then(res => {
+          console.log(res);
+          if (res.data.status == 200) {
+            this.obj = res.data.data;
+            this.drawLine(this.obj,'week');
+          }
+        });
+    },
+    monthBook() {
+      this.axios
+        .get("bill/fanChartByCustomIdMonth", {
+          params: {
+            custom_id: this.custom_id
+          }
+        })
+        .then(res => {
+          console.log(res);
+          if (res.data.status == 200) {
+            this.obj = res.data.data;
+            this.drawLine(this.obj,'month');
+          }
+        });
+    },
+    drawLine(obj, el) {
       // 基于准备好的dom，初始化echarts实例
-      let week = this.$echarts.init(document.getElementById("week"));
-      let month = this.$echarts.init(document.getElementById("month"));
+      let arr = obj.map(item => {
+        return item.billType;
+      });
+      console.log(arr);
+      let arrCon = obj.map(item => {
+        return item.total;
+      });
+      console.log(arrCon);
+      let dom = this.$echarts.init(document.getElementById(el));
       let option = {
-        // backgroundColor: '#2c343c',
-
-        title: {
-          text: "扇形统计",
-          left: "center",
-          top: 20,
-          textStyle: {
-            color: "#606266"
-          }
+        legend: {},
+        tooltip: {},
+        xAxis: {
+          type: "category",
+          data: arr
         },
-
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-
-        visualMap: {
-          show: false,
-          min: 80,
-          max: 600,
-          inRange: {
-            colorLightness: [0, 1]
-          }
+        yAxis: {
+          type: "value"
         },
         series: [
           {
-            name: "详细数据",
-            type: "pie",
-            radius: "55%",
-            center: ["50%", "50%"],
-            data: [
-              { value: 335, name: "生活开支" },
-              { value: 310, name: "采购" },
-              { value: 274, name: "销售" },
-              { value: 235, name: "合计盈亏" }
-            ].sort(function(a, b) {
-              return a.value - b.value;
-            }),
-            roseType: "radius",
-            label: {
-              color: "#606266"
-            },
-            labelLine: {
-              lineStyle: {
-                color: "rgba(0, 0, 0, 0.3)"
-              },
-              smooth: 0.2,
-              length: 10,
-              length2: 20
-            },
-            itemStyle: {
-              color: "#c23531",
-              shadowBlur: 200,
-              shadowColor: "rgba(0, 0, 0, 0.5)"
-            },
-
-            animationType: "scale",
-            animationEasing: "elasticOut",
-            animationDelay: function(idx) {
-              return Math.random() * 200;
-            }
+            data: arrCon,
+            type: "bar"
           }
         ]
       };
       // 绘制图表
-      week.setOption(option);
-      month.setOption(option);
+      dom.setOption(option);
     }
   }
 };
@@ -194,7 +198,7 @@ export default {
   box-sizing: content-box;
   padding: 0 10px;
 }
-.income_card div{
+.income_card div {
   border-bottom: 1px solid #cccccc;
 }
 .income_card div:last-child {
@@ -210,7 +214,7 @@ export default {
   font-weight: bold;
 }
 .right_con {
-  color: #409EFF;
+  color: #409eff;
   float: right;
   height: 50px;
   line-height: 50px;
@@ -246,5 +250,13 @@ ul li {
 ul li img {
   vertical-align: middle;
   margin: 0 10px;
+}
+.loginOut{
+  height: 40px;
+  width: 40%;
+  border-radius: 200px;
+  background: #409EFF;
+  font-size: 14px;
+  color: #fff;
 }
 </style>

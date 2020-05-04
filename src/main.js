@@ -16,7 +16,8 @@ Vue.prototype.$echarts = echarts
 Vue.use(ElementUI),
 
 Vue.use(Vuex)
-axios.defaults.baseURL = "http://192.168.0.4:8080"
+// axios.defaults.baseURL = "http://192.168.0.5:8080"
+axios.defaults.baseURL = "http://119.3.158.226:8088"
 Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
@@ -29,7 +30,6 @@ let that = new Vue({
   components: { App },
   template: '<App/>'
 })
-console.log(JSON.parse(that.$store.getters.userMsg).id)
 if(!that.$store.getters.userMsg){
   that.$router.push("/login")
 }
